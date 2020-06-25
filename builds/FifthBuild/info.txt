@@ -1,0 +1,6 @@
+This is the fifth build of the game
+Created June 18th 2020
+
+Why?
+This version is identical to the forth build
+only differance is that now there is an icon for the game (quite proud of it)

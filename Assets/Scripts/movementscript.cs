@@ -6,12 +6,29 @@ public class movementscript : MonoBehaviour
 {
     public Transform trans;
     public Rigidbody2D rb;
+
     public float walkingSpeed;
     public float runningSpeed;
+
+    public float editorWalkingSpeed;
+    public float editorRunningSpeed;
 
     public bool runByDefault;
 
     private float currentSpeed;
+
+    private void Start()
+    {
+        // for some odd reason the rest of the code runs perfect on stand alone
+        // but eh what can I do?
+        if (Application.isEditor)
+        {
+            walkingSpeed = editorWalkingSpeed;
+            runningSpeed = editorRunningSpeed;
+        }
+    }
+
+
 
     void Update()
     {
@@ -34,7 +51,6 @@ public class movementscript : MonoBehaviour
             isRunning = false;
         }
 
-        print(isRunning);
 
         if (isRunning)
         {
@@ -45,6 +61,8 @@ public class movementscript : MonoBehaviour
             currentSpeed = walkingSpeed;
         }
 
+        currentSpeed = currentSpeed * Time.deltaTime;
+
 
         // move up or other ways (\ | /)
         if (Input.GetKey(KeyCode.W))
@@ -52,17 +70,17 @@ public class movementscript : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 trans.eulerAngles = new Vector3(0, 0, -45);
-                rb.velocity = new Vector2(currentSpeed * Time.deltaTime * 0.5f, currentSpeed * Time.deltaTime * 0.5f);
+                rb.velocity = new Vector2(currentSpeed * 0.5f, currentSpeed * 0.5f);
             }
             else if (Input.GetKey(KeyCode.A))
             {
                 trans.eulerAngles = new Vector3(0, 0, 45);
-                rb.velocity = new Vector2(currentSpeed * -1 * Time.deltaTime * 0.5f, currentSpeed * Time.deltaTime * 0.5f);
+                rb.velocity = new Vector2(currentSpeed * -1 * 0.5f, currentSpeed * 0.5f);
             }
             else
             {
                 trans.eulerAngles = new Vector3(0, 0, 0);
-                rb.velocity = new Vector2(0, currentSpeed * Time.deltaTime);
+                rb.velocity = new Vector2(0, currentSpeed);
             }
 
         }
@@ -73,17 +91,17 @@ public class movementscript : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 trans.eulerAngles = new Vector3(0, 0, -135);
-                rb.velocity = new Vector2(currentSpeed * Time.deltaTime * 0.5f, currentSpeed * -1 * Time.deltaTime * 0.5f);
+                rb.velocity = new Vector2(currentSpeed * 0.5f, currentSpeed * -1 * 0.5f);
             }
             else if (Input.GetKey(KeyCode.A))
             {
                 trans.eulerAngles = new Vector3(0, 0, 135);
-                rb.velocity = new Vector2(currentSpeed * -1 * Time.deltaTime * 0.5f, currentSpeed * -1 * Time.deltaTime * 0.5f);
+                rb.velocity = new Vector2(currentSpeed * -1 * 0.5f, currentSpeed * -1 * 0.5f);
             }
             else
             {
                 trans.eulerAngles = new Vector3(0, 0, 180);
-                rb.velocity = new Vector2(0, currentSpeed * -1 * Time.deltaTime);
+                rb.velocity = new Vector2(0, currentSpeed * -1);
             }
         }
 
@@ -92,13 +110,13 @@ public class movementscript : MonoBehaviour
         else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
             trans.eulerAngles = new Vector3(0, 0, 90);
-            rb.velocity = new Vector2(currentSpeed * -1 * Time.deltaTime, 0);
+            rb.velocity = new Vector2(currentSpeed * -1, 0);
         }
 
         else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
             trans.eulerAngles = new Vector3(0, 0, -90);
-            rb.velocity = new Vector2(currentSpeed * Time.deltaTime, 0);
+            rb.velocity = new Vector2(currentSpeed, 0);
         }
 
         // if all movement keys are released then set velocity to 0

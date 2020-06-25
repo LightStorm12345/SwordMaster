@@ -1,0 +1,6 @@
+This is the forth build of the game
+Created on June 18 2020
+
+Why?
+This was to test how fast the character moves after the movement speed has been reduced
+and the issue "fixed"

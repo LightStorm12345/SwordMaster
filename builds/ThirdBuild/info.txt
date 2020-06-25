@@ -1,0 +1,8 @@
+this is the third build of the game
+created June 18 2020
+
+Why?
+This was to test the complete fix for tilemaps
+Also the counter you can see is the players velocity.
+This is present because I was trying to fix an issue with the player moving faster in the stand alone builds
+than in the editor

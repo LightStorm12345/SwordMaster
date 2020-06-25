@@ -1,0 +1,7 @@
+This is the second build of the game
+created June 17th 2020
+
+Why:
+To test the new fix for tilemaps
+it was used to test the tilemap fix
+as you can see fixing the tilemap made a new issue that was resolved in later versions.

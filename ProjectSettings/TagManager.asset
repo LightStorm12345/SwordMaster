@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sword
+  - Coin01
+  - Coin02
+  - Coin
   layers:
   - Default
   - TransparentFX

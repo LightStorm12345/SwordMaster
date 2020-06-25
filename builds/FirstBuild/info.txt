@@ -1,0 +1,5 @@
+This is the first ever build of the game
+created June 17th 2020
+
+Why?
+It was a test of how well the game runs stand alone and how the tilemaps work in a stand alone enviorment
