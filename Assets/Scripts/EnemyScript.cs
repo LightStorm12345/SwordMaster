@@ -13,7 +13,23 @@ public class EnemyScript : MonoBehaviour
     public int minNumberOfCoins;
     public int maxNumberOfCoins;
 
-    public int health;
+    public GameObject healthbar;
+
+
+    public int health = 10;
+    // DO NOT CHANGE THIS!!!
+    // FOR NOW THIS IS PERMANENT
+
+    public Sprite hl1;
+    public Sprite hl2;
+    public Sprite hl3;
+    public Sprite hl4;
+    public Sprite hl5;
+    public Sprite hl6;
+    public Sprite hl7;
+    public Sprite hl8;
+    public Sprite hl9;
+    public Sprite hl10;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,12 +37,48 @@ public class EnemyScript : MonoBehaviour
         if (collision.tag == "Sword")
         {
             health = health - 1;
-            print(health);
         }
     }
 
     private void Update()
     {
+        SpriteRenderer spriteRender = healthbar.GetComponent<SpriteRenderer>();
+
+        switch (health)
+        {
+            case 10:
+                spriteRender.sprite = hl10;
+                break;
+            case 9:
+                spriteRender.sprite = hl9;
+                break;
+            case 8:
+                spriteRender.sprite = hl8;
+                break;
+            case 7:
+                spriteRender.sprite = hl7;
+                break;
+            case 6:
+                spriteRender.sprite = hl6;
+                break;
+            case 5:
+                spriteRender.sprite = hl5;
+                break;
+            case 4:
+                spriteRender.sprite = hl4;
+                break;
+            case 3:
+                spriteRender.sprite = hl3;
+                break;
+            case 2:
+                spriteRender.sprite = hl2;
+                break;
+            case 1:
+                spriteRender.sprite = hl1;
+                break;
+        }
+
+
         // if the health is equal to 0, spawn coins
         if (health == 0)
         {

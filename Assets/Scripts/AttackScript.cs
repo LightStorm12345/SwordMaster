@@ -20,6 +20,10 @@ public class AttackScript : MonoBehaviour
         {
             StartCoroutine(SwordAttack());
         }
+        if (Input.GetKeyDown(KeyCode.Mouse1) && AllowAttack == true)
+        {
+            StartCoroutine(SwordSpin());
+        }
     }
 
     private IEnumerator SwordAttack()
@@ -31,6 +35,16 @@ public class AttackScript : MonoBehaviour
         animator.SetBool("SwordAttack", true);
         yield return new WaitForSeconds(0.8f);
         animator.SetBool("SwordAttack", false);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        AllowAttack = true;
+    }
+    private IEnumerator SwordSpin()
+    {
+        AllowAttack = false;
+        gameObject.GetComponent<Collider2D>().enabled = true;
+        animator.SetBool("SwordSpin", true);
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("SwordSpin", false);
         gameObject.GetComponent<Collider2D>().enabled = false;
         AllowAttack = true;
     }

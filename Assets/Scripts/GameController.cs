@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 {
     public Text MoneyCounter;
     public GameObject player;
+    public GameObject enemy;
+    public GameObject pauseMenu;
 
     void Update()
     {
@@ -14,5 +16,17 @@ public class GameController : MonoBehaviour
         int playerMoney = player.GetComponent<playerscript>().Money;
 
         MoneyCounter.text = "$" + playerMoney.ToString();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Instantiate(enemy);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+        }
+
     }
 }

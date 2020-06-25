@@ -1,0 +1,11 @@
+this is the 7th build of the game, also new naming scheme,
+
+this is a proper version of the game
+
+CONTROLS:
+WASD - movement
+Shift - Sprint
+Left Click - standard attack
+Right Click - Alt Attack
+1 - spawn new enemy
+escape - pause menu
