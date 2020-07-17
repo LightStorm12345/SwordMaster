@@ -71,6 +71,9 @@
     <Compile Include="Assets\Scripts\movementscript.cs" />
     <Compile Include="Assets\Scripts\pauseMenu.cs" />
     <Compile Include="Assets\Scripts\playerscript.cs" />
+    <Compile Include="Assets\Scripts\shop.cs" />
+    <Compile Include="Assets\Scripts\shopUI.cs" />
+    <Compile Include="Assets\Scripts\spearAttack.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/unity projects/SwordMaster/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

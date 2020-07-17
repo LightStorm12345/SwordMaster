@@ -657,4 +657,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/unity projects/SwordMaster/builds/7th Build/Sword Master.exe
+  playerPath: D:/unity projects/SwordMaster/builds/11th build/Sword Master.exe

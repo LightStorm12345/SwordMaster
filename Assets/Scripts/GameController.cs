@@ -9,6 +9,14 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public GameObject enemy;
     public GameObject pauseMenu;
+    public GameObject playerHealthBar;
+
+    public Sprite[] phs;
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
 
     void Update()
     {
@@ -28,5 +36,10 @@ public class GameController : MonoBehaviour
             pauseMenu.SetActive(true);
         }
 
+        int playerHealth = player.GetComponent<playerscript>().health;
+
+        playerHealthBar.GetComponent<Image>().sprite = phs[playerHealth];
+
+        // made the healthbar code WAYYYY more effcient :)
     }
 }

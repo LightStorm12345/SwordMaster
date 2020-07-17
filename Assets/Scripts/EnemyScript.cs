@@ -10,26 +10,21 @@ public class EnemyScript : MonoBehaviour
 {
     public GameObject highValueCoin;
     public GameObject lowValueCoin;
+    public GameObject healthKit;
+
     public int minNumberOfCoins;
     public int maxNumberOfCoins;
 
     public GameObject healthbar;
+
+    public int chanceOfDroppingHealthKit;
 
 
     public int health = 10;
     // DO NOT CHANGE THIS!!!
     // FOR NOW THIS IS PERMANENT
 
-    public Sprite hl1;
-    public Sprite hl2;
-    public Sprite hl3;
-    public Sprite hl4;
-    public Sprite hl5;
-    public Sprite hl6;
-    public Sprite hl7;
-    public Sprite hl8;
-    public Sprite hl9;
-    public Sprite hl10;
+    public Sprite[] hls;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,39 +39,9 @@ public class EnemyScript : MonoBehaviour
     {
         SpriteRenderer spriteRender = healthbar.GetComponent<SpriteRenderer>();
 
-        switch (health)
-        {
-            case 10:
-                spriteRender.sprite = hl10;
-                break;
-            case 9:
-                spriteRender.sprite = hl9;
-                break;
-            case 8:
-                spriteRender.sprite = hl8;
-                break;
-            case 7:
-                spriteRender.sprite = hl7;
-                break;
-            case 6:
-                spriteRender.sprite = hl6;
-                break;
-            case 5:
-                spriteRender.sprite = hl5;
-                break;
-            case 4:
-                spriteRender.sprite = hl4;
-                break;
-            case 3:
-                spriteRender.sprite = hl3;
-                break;
-            case 2:
-                spriteRender.sprite = hl2;
-                break;
-            case 1:
-                spriteRender.sprite = hl1;
-                break;
-        }
+        // I made the healthbar code WAYYYY more efficient :)
+
+        spriteRender.sprite = hls[Mathf.Clamp(health-1, 0, 9)];
 
 
         // if the health is equal to 0, spawn coins
@@ -102,6 +67,7 @@ public class EnemyScript : MonoBehaviour
                         GameObject HVC = Instantiate(highValueCoin);
                         HVC.transform.position = offset;
                         break;
+                    
                     case 2:
                         // low value coin
                         GameObject LVC = Instantiate(lowValueCoin);
@@ -109,6 +75,14 @@ public class EnemyScript : MonoBehaviour
                         break;
 
                 }
+                rng = Random.Range(1, 10);
+
+                if (rng <= chanceOfDroppingHealthKit)
+                {
+                    GameObject hk = Instantiate(healthKit);
+                    hk.transform.position = offset;
+                }
+
             }
             // we are done generating coins, remove the enemy
             Destroy(gameObject);

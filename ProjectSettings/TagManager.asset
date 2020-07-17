@@ -8,6 +8,8 @@ TagManager:
   - Coin01
   - Coin02
   - Coin
+  - Enemy
+  - HealthKit
   layers:
   - Default
   - TransparentFX
