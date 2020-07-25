@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - Enemy
   - HealthKit
+  - Weapon
   layers:
   - Default
   - TransparentFX

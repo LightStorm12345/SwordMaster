@@ -9,9 +9,10 @@ public class AttackScript : MonoBehaviour
     public GameObject player;
 
     public bool isSword;
-    public bool isSpear;
+    public bool isShuriken;
 
-    private bool spearThrown;
+    private bool throwShuriken = false;
+    private Vector3 positionToMoveTo;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class AttackScript : MonoBehaviour
 
     private void Update()
     {
+
         if (isSword)
         {
             // when left mouse button is pressed and the animation is complete then run the attack animation
@@ -34,51 +36,70 @@ public class AttackScript : MonoBehaviour
             }
         }
 
-        if (isSpear)
+        if (isShuriken)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && AllowAttack == true)
             {
-                // become own object
-                gameObject.transform.SetParent(null);
-                animator.SetBool("Throw", true);
-                AllowAttack = false;
+                
+
+                //positionToMoveTo = gameObject.transform.up * 10f; replaced in favour of moving the shuriken towards the mouse
+
+                gameObject.GetComponent<Collider2D>().enabled = true;
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = 0;
+                positionToMoveTo = mousePosition;
+
+                // animator.SetBool("shurikenThrown", true);
+                throwShuriken = true;
             }
         }
 
-        if (spearThrown) // from what I seen, this is the most efficient way to do it
+        // this section is dedicated to things that need the update function
+        if (throwShuriken)
         {
-            ThrowSpear();
+            gameObject.transform.SetParent(null);
+            ThrowShuriken();
         }
-
-
     }
 
-    public void AlertObserver(string message)
+    private void ThrowShuriken()
+    {
+        float lerpSpeed = 1f;
+        float destroySafeThreshold = 0.3f;
+        float rotateSpeed = 500.0f;
+
+        gameObject.transform.Rotate(new Vector3(0f, 0f, 90), rotateSpeed * Time.deltaTime);
+
+        gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, positionToMoveTo, lerpSpeed * 3.0f * Time.deltaTime);
+
+        if (Vector2.Distance(gameObject.transform.position, positionToMoveTo) <= destroySafeThreshold)
+        {
+            Destroy(gameObject);
+            FindObjectOfType<inventorySystem>().SpawnItem();
+        }
+    }
+
+
+
+
+
+    // this is just for referance, this is not needed as of now
+    // Description:
+    // this is a function that can be called in the animator, the interted string will be read
+    // and code can be excecuted based on that string
+
+    /*public void AlertObserver(string message)
     {
         if (message.Equals("SpearAnimationComplete"))
         {
-            animator.enabled = false;
-            spearThrown = true;
+
         }
-    }
-
-    private void ThrowSpear()
-    {
-        float lerpSpeed = 1f;
-        // dont ask why it's vector3 it wouldnt work on vector 2 for some reason
-        Vector3 offset = new Vector3(0, 10, 0);
-        Vector3 positionToMoveTo = gameObject.transform.localPosition + offset;
-
-        gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, positionToMoveTo, lerpSpeed * 5.0f * Time.deltaTime);
-
-        /*if (gameObject.transform.position == positionToMoveTo)
-        {
-            Destroy(gameObject);
-        }*/
-    }
+    }*/
 
 
+    
 
+    // UPDATE THIS SCRIPT TO WORK WITH animation.isPlaying()
     private IEnumerator SwordAttack()
     {
         // run the attack animation and wait for 0.8 seconds before allowing the user to use it again
@@ -90,6 +111,11 @@ public class AttackScript : MonoBehaviour
         animator.SetBool("SwordAttack", true);
 
         yield return new WaitForSeconds(0.8f);
+
+        //print(animator.GetCurrentAnimatorStateInfo(0).tagHash);
+        
+        animator.SetBool("SwordAttack", false);
+
 
         animator.SetBool("SwordAttack", false);
 

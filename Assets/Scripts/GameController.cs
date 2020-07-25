@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public GameObject enemy;
     public GameObject pauseMenu;
     public GameObject playerHealthBar;
+    
 
     public Sprite[] phs;
 
