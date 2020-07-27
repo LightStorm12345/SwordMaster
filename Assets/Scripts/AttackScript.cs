@@ -16,6 +16,7 @@ public class AttackScript : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.Find("character");
         AllowAttack = true;
         gameObject.GetComponent<Collider2D>().enabled = false;
     }
@@ -66,9 +67,9 @@ public class AttackScript : MonoBehaviour
     {
         float lerpSpeed = 1f;
         float destroySafeThreshold = 0.3f;
-        float rotateSpeed = 500.0f;
+        //float rotateSpeed = 500.0f;
 
-        gameObject.transform.Rotate(new Vector3(0f, 0f, 90), rotateSpeed * Time.deltaTime);
+        //gameObject.transform.Rotate(new Vector3(0f, 0f, 90), rotateSpeed * Time.deltaTime);
 
         gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, positionToMoveTo, lerpSpeed * 3.0f * Time.deltaTime);
 
