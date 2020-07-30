@@ -52,6 +52,7 @@ public class AttackScript : MonoBehaviour
 
                 // animator.SetBool("shurikenThrown", true);
                 throwShuriken = true;
+                AllowAttack = false;
             }
         }
 
@@ -67,9 +68,9 @@ public class AttackScript : MonoBehaviour
     {
         float lerpSpeed = 1f;
         float destroySafeThreshold = 0.3f;
-        //float rotateSpeed = 500.0f;
+        float rotateSpeed = 500.0f;
 
-        //gameObject.transform.Rotate(new Vector3(0f, 0f, 90), rotateSpeed * Time.deltaTime);
+        gameObject.transform.Rotate(new Vector3(0f, 0f, 90), rotateSpeed * Time.deltaTime);
 
         gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, positionToMoveTo, lerpSpeed * 3.0f * Time.deltaTime);
 
@@ -80,7 +81,11 @@ public class AttackScript : MonoBehaviour
         }
     }
 
-
+    public void DestroyThrowable()
+    {
+        Destroy(gameObject);
+        FindObjectOfType<inventorySystem>().SpawnItem();
+    }
 
 
 

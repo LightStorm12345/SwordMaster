@@ -66,16 +66,16 @@
     <Compile Include="Assets\Scripts\AttackScript.cs" />
     <Compile Include="Assets\Scripts\CameraTrack.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />
-    <Compile Include="Assets\Scripts\FixAnimationNotPlayLocal.cs" />
+    <Compile Include="Assets\Scripts\FPSDisplay.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\coinScript.cs" />
-    <Compile Include="Assets\Scripts\inventorySystem.cs" />
     <Compile Include="Assets\Scripts\itemIDSystem.cs" />
-    <Compile Include="Assets\Scripts\movementscript.cs" />
     <Compile Include="Assets\Scripts\pauseMenu.cs" />
-    <Compile Include="Assets\Scripts\playerscript.cs" />
-    <Compile Include="Assets\Scripts\shop.cs" />
-    <Compile Include="Assets\Scripts\shopUI.cs" />
+    <Compile Include="Assets\Scripts\playerStuff\inventorySystem.cs" />
+    <Compile Include="Assets\Scripts\playerStuff\movementscript.cs" />
+    <Compile Include="Assets\Scripts\playerStuff\playerscript.cs" />
+    <Compile Include="Assets\Scripts\shop\shop.cs" />
+    <Compile Include="Assets\Scripts\shop\shopUI.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/unity projects/SwordMaster/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

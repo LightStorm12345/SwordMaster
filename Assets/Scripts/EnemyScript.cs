@@ -26,29 +26,19 @@ public class EnemyScript : MonoBehaviour
 
     public Sprite[] hls;
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // the collider tag is equal to "Sword" then reduce the health
-        if (collision.tag == "Sword")
-        {
-            health = health - 1;
-        }
-    }*/
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        print(collision.tag + " " + collision.name);
 
         // the collider tag is equal to "Sword" then reduce the health
         if (collision.tag == "Sword")
         {
             health = health - 1;
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print(other.name);
-        print("f");
+        if (collision.tag == "Shuriken")
+        {
+            health = health - 1;
+            collision.gameObject.GetComponent<AttackScript>().DestroyThrowable();
+        }
     }
 
     private void Update()

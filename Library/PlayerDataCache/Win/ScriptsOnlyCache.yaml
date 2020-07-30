@@ -4,20 +4,25 @@ ScriptsOnlyBuild:
     - AttackScript
     - CameraTrack
     - EnemyScript
+    - FPSDisplay
     - GameController
     - coinScript
+    - inventorySystem
+    - itemIDSystem
     - movementscript
     - pauseMenu
     - playerscript
+    - shop
+    - shopUI
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
-    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.PaintableSceneViewGrid
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -57,11 +62,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 68
-      Script: {instanceID: 0}
-    - Class: 70
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
@@ -78,33 +83,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11172}
     - Class: 114
-      Script: {instanceID: 11458}
+      Script: {instanceID: 11358}
     - Class: 114
-      Script: {instanceID: 11512}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11774}
+      Script: {instanceID: 11514}
     - Class: 114
-      Script: {instanceID: 12174}
+      Script: {instanceID: 11720}
     - Class: 114
-      Script: {instanceID: 12796}
+      Script: {instanceID: 11778}
     - Class: 114
-      Script: {instanceID: 12872}
+      Script: {instanceID: 12066}
     - Class: 114
-      Script: {instanceID: 13132}
+      Script: {instanceID: 12182}
     - Class: 114
-      Script: {instanceID: 13168}
+      Script: {instanceID: 12486}
     - Class: 114
-      Script: {instanceID: 13282}
+      Script: {instanceID: 12808}
     - Class: 114
-      Script: {instanceID: 13634}
+      Script: {instanceID: 12884}
     - Class: 114
-      Script: {instanceID: 13874}
+      Script: {instanceID: 13144}
     - Class: 114
-      Script: {instanceID: 14182}
+      Script: {instanceID: 13180}
     - Class: 114
-      Script: {instanceID: 14248}
+      Script: {instanceID: 13294}
     - Class: 114
-      Script: {instanceID: 14252}
+      Script: {instanceID: 13646}
+    - Class: 114
+      Script: {instanceID: 13886}
+    - Class: 114
+      Script: {instanceID: 14194}
+    - Class: 114
+      Script: {instanceID: 14260}
+    - Class: 114
+      Script: {instanceID: 14264}
+    - Class: 114
+      Script: {instanceID: 29656}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -162,6 +177,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: b8d3079cf0ef24fa60d374727c3fea69
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: shop
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -254,7 +275,13 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: f7db4d08b2b3175cdf4b4237e36b3511
+      Hash: 96c2f0e766b79d285af9c250a140eb61
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: itemIDSystem
+  - hash:
+      serializedVersion: 2
+      Hash: 9d28aad6aa6c5f2df24ca6eb1f94b3f6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyScript
@@ -320,6 +347,12 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 8423a9292b598bbdbda43ccecb62737a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: shopUI
+  - hash:
+      serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -360,6 +393,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Selectable
+  - hash:
+      serializedVersion: 2
+      Hash: 54fc1bb51091cfc2bb964b0352c5b8af
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: inventorySystem
   - hash:
       serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
@@ -428,7 +467,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: adc1ca2c5169b913fb0a8ed89cfe4ead
+      Hash: 3d6bbef1187663e57a86c1a6c3e7318d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -494,7 +533,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 30f3213a6e218a461fa00e428f22d3eb
+      Hash: b0f4c307c8d002a42e0b0abbdf43f9dd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AttackScript
@@ -584,7 +623,7 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
-      Hash: 622fa5e6dd26a1114bdb6d7649832028
+      Hash: 088923c17917304f385ec16bbec10d71
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: playerscript
@@ -654,7 +693,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: abe2eb2f19014a4937c00aeb605751e4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FPSDisplay
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/unity projects/SwordMaster/builds/11th build/Sword Master.exe
+  playerPath: D:/unity projects/SwordMaster/builds/Build 008/Sword Master.exe
