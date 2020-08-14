@@ -28,7 +28,6 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         // the collider tag is equal to "Sword" then reduce the health
         if (collision.tag == "Sword")
         {

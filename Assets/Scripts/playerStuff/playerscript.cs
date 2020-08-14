@@ -16,29 +16,10 @@ public class playerscript : MonoBehaviour
     public GameObject deathScreen;
 
 
-    public int currSprite = 0;
-    // 0 = idle
-    // 1 = Sword Spin
-
-    public SpriteRenderer spriteRenderer;
-    public Sprite idleSprite;
-    public Sprite swordSpinSprite;
-
-
     // in later versions of the game have saved files for this type of stuff for now it just always starts with $0
 
     private void Update()
     {
-
-        switch (currSprite)
-        {
-            case 0:
-                spriteRenderer.sprite = idleSprite;
-                break;
-            case 1:
-                spriteRenderer.sprite = swordSpinSprite;
-                break;
-        }
 
         if (health == 0)
         {

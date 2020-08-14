@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class FPSDisplay : MonoBehaviour
 {
-    [SerializeField] private Text _fpsText;
+    public Text _fpsText;
     [SerializeField] private float _hudRefreshRate = 1f;
 
     private float _timer;

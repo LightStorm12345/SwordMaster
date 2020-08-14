@@ -65,17 +65,21 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AttackScript.cs" />
     <Compile Include="Assets\Scripts\CameraTrack.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\FPSDisplay.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\coinScript.cs" />
+    <Compile Include="Assets\Scripts\itemData.cs" />
     <Compile Include="Assets\Scripts\itemIDSystem.cs" />
     <Compile Include="Assets\Scripts\pauseMenu.cs" />
-    <Compile Include="Assets\Scripts\playerStuff\inventorySystem.cs" />
+    <Compile Include="Assets\Scripts\playerStuff\inventoryController.cs" />
     <Compile Include="Assets\Scripts\playerStuff\movementscript.cs" />
+    <Compile Include="Assets\Scripts\playerStuff\newInventorySystem.cs" />
     <Compile Include="Assets\Scripts\playerStuff\playerscript.cs" />
     <Compile Include="Assets\Scripts\shop\shop.cs" />
     <Compile Include="Assets\Scripts\shop\shopUI.cs" />
+    <Compile Include="Assets\Scripts\shop\shopUIRework.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/unity projects/SwordMaster/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

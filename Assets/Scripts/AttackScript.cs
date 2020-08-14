@@ -77,14 +77,14 @@ public class AttackScript : MonoBehaviour
         if (Vector2.Distance(gameObject.transform.position, positionToMoveTo) <= destroySafeThreshold)
         {
             Destroy(gameObject);
-            FindObjectOfType<inventorySystem>().SpawnItem();
+            FindObjectOfType<inventoryController>().SpawnItem();
         }
     }
 
     public void DestroyThrowable()
     {
         Destroy(gameObject);
-        FindObjectOfType<inventorySystem>().SpawnItem();
+        FindObjectOfType<inventoryController>().SpawnItem();
     }
 
 
@@ -133,7 +133,9 @@ public class AttackScript : MonoBehaviour
     {
         AllowAttack = false;
 
-        player.GetComponent<playerscript>().currSprite = 1;
+        //player.GetComponent<playerscript>().currSprite = 1;
+        int prevSortingLayer = gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 99;
 
         gameObject.GetComponent<Collider2D>().enabled = true;
 
@@ -145,7 +147,8 @@ public class AttackScript : MonoBehaviour
 
         gameObject.GetComponent<Collider2D>().enabled = false;
 
-        player.GetComponent<playerscript>().currSprite = 0;
+        //player.GetComponent<playerscript>().currSprite = 0;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = prevSortingLayer;
 
         AllowAttack = true;
     }

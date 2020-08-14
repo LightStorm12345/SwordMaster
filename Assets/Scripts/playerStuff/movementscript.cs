@@ -6,6 +6,7 @@ public class movementscript : MonoBehaviour
 {
     public Transform trans;
     public Rigidbody2D rb;
+    public Transform objectHolder;
 
     public float walkingSpeed;
     public float runningSpeed;
@@ -16,6 +17,11 @@ public class movementscript : MonoBehaviour
     public bool runByDefault;
 
     private float currentSpeed;
+
+    public Sprite[] playerSprites;
+    // 0 - forward
+    // 1 - backwards
+    // 2 - sides
 
     private void Start()
     {
@@ -33,6 +39,7 @@ public class movementscript : MonoBehaviour
     void Update()
     {
         bool isRunning = false; // unity gets mad if I don't assign it, even tho is assigned later in the code, but what can I do about it, eh?
+        
 
         if (runByDefault && Input.GetKey(KeyCode.LeftShift)) // check if the player runs by default and if the user pressed shift
         {
@@ -63,23 +70,30 @@ public class movementscript : MonoBehaviour
 
         currentSpeed = currentSpeed * Time.deltaTime;
 
-
         // move up or other ways (\ | /)
         if (Input.GetKey(KeyCode.W))
         {
+            gameObject.GetComponent<SpriteRenderer>().sprite = playerSprites[0];
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            trans.GetChild(0).transform.eulerAngles = new Vector3(0, 0, 0);
+            if (objectHolder.childCount > 0)
+            {
+                objectHolder.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
+            }
+
             if (Input.GetKey(KeyCode.D))
             {
-                trans.eulerAngles = new Vector3(0, 0, -45);
+                //trans.eulerAngles = new Vector3(0, 0, -45);
                 rb.velocity = new Vector2(currentSpeed * 0.5f, currentSpeed * 0.5f);
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                trans.eulerAngles = new Vector3(0, 0, 45);
+                //trans.eulerAngles = new Vector3(0, 0, 45);
                 rb.velocity = new Vector2(currentSpeed * -1 * 0.5f, currentSpeed * 0.5f);
             }
             else
             {
-                trans.eulerAngles = new Vector3(0, 0, 0);
+                //trans.eulerAngles = new Vector3(0, 0, 0);
                 rb.velocity = new Vector2(0, currentSpeed);
             }
 
@@ -88,19 +102,28 @@ public class movementscript : MonoBehaviour
         // move down or other ways (/ | \)
         else if (Input.GetKey(KeyCode.S))
         {
+            gameObject.GetComponent<SpriteRenderer>().sprite = playerSprites[1];
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            trans.GetChild(0).transform.eulerAngles = new Vector3(0, 0, 180);
+            
+            if (objectHolder.childCount > 0)
+            {
+                objectHolder.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 99;
+            }
+
             if (Input.GetKey(KeyCode.D))
             {
-                trans.eulerAngles = new Vector3(0, 0, -135);
+                //trans.eulerAngles = new Vector3(0, 0, -135);
                 rb.velocity = new Vector2(currentSpeed * 0.5f, currentSpeed * -1 * 0.5f);
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                trans.eulerAngles = new Vector3(0, 0, 135);
+                //trans.eulerAngles = new Vector3(0, 0, 135);
                 rb.velocity = new Vector2(currentSpeed * -1 * 0.5f, currentSpeed * -1 * 0.5f);
             }
             else
             {
-                trans.eulerAngles = new Vector3(0, 0, 180);
+                //trans.eulerAngles = new Vector3(0, 0, 180);
                 rb.velocity = new Vector2(0, currentSpeed * -1);
             }
         }
@@ -109,13 +132,29 @@ public class movementscript : MonoBehaviour
         // (- o -)
         else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
-            trans.eulerAngles = new Vector3(0, 0, 90);
+            gameObject.GetComponent<SpriteRenderer>().sprite = playerSprites[2];
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            trans.GetChild(0).transform.eulerAngles = new Vector3(0, 180, -90);
+            if (objectHolder.childCount > 0)
+            {
+                objectHolder.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 99;
+            }
+
+            //trans.eulerAngles = new Vector3(0, 0, 90);
             rb.velocity = new Vector2(currentSpeed * -1, 0);
         }
 
         else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
-            trans.eulerAngles = new Vector3(0, 0, -90);
+            gameObject.GetComponent<SpriteRenderer>().sprite = playerSprites[2];
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            trans.GetChild(0).transform.eulerAngles = new Vector3(0, 0, -90);
+            if (objectHolder.childCount > 0)
+            {
+                objectHolder.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
+            }
+
+            //trans.eulerAngles = new Vector3(0, 0, -90);
             rb.velocity = new Vector2(currentSpeed, 0);
         }
 
